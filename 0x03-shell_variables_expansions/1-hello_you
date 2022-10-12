@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Hello `id -u -n`"
+echo "hello `id -u -n`"
