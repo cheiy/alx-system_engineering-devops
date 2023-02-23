@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Script displasy the content of the current directory in a list format, where only the part of the name
+# after the first dash is displayed.
+for item in $(find . -type f -printf %f"\n" | cut -d "-" -f 2)
+do
+	echo "$item"
+done
