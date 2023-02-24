@@ -4,13 +4,15 @@ FILE=school
 if test -e "$FILE"
 then
 	echo "$FILE file exists"
-	if test -s "$FILE" && test -f "$FILE"
+	if test -f "$FILE"
 	then
 		echo "$FILE is a regular file"
-		echo "$FILE file is not empty"
-	elif test -s "$FILE"
+	fi
+	if test -s "$FILE"
 	then
-		echo "$FILE file is empty"
+		echo "$FILE file is not empty"
+	else
+		echo "$FILE is empty"
 	fi
 else
 	echo "$FILE file does not exist"
