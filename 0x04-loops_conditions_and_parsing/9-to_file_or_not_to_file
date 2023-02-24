@@ -8,8 +8,8 @@ then
 	then
 		echo "$FILE is a regular file"
 		echo "$FILE file is not empty"
-	else
-		echo "$FILE is a regular file"
+	elif test -s "$FILE"
+	then
 		echo "$FILE file is empty"
 	fi
 else
