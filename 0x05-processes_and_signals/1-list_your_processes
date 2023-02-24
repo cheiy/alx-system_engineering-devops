@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script shows all processes, for all users, including TTY-less ones
+ps xafu
