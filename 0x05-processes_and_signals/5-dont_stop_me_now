@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Don't stop me now! script
+my_pid=$(pgrep -f 4-to_infinity)
+kill "$my_pid"
