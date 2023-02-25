@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Script does several things
+while true
+do
+	echo $$ > /var/run/myscript.pid
+	sleep 2
+	echo "To infinity and beyond"
+	trap 'echo Y U no love me?!' SIGINT
+	trap 'echo I hate the kill command' SIGTERM
+done
+trap 'rm -f /var/run/myscript.pid' SIGQUIT SIGTERM
