@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script accepts an IP address and sends 5 ICMP echo packets to it
+if [ -z "$1" ]
+then
+	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+else
+	ping "$1" -c 5
+fi
