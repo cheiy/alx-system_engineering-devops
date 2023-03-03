@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script prints all the active IPv4 IPs on a machine
+ip -4 -h -br addr show | tr -s " " | cut -d " " -f 3 | cut -d "/" -f 1
