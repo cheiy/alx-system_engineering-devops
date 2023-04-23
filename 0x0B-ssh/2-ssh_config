@@ -1,0 +1,4 @@
+Host 54.237.19.150
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    ChallengeResponseAuthentication no
