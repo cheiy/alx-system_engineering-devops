@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-ssh -i "~/.ssh/school" -o User=ubuntu 54.237.19.150
+ssh -i "~/.ssh/school" 54.237.19.150
