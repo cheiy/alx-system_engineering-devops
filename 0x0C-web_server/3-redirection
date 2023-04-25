@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # This script installs the nginx webserver on a server and performs a redirection
+sudo apt-get update -y && sudo apt-get upgrade -y
 sudo apt-get -y install nginx
+sudo chown -R "$USER":"$USER" /var/www/
+sudo chown -R "$USER":"$USER" /etc/nginx
 echo "Hello World" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
 sudo sed -i '24 i \\trewrite ^/redirect_me$ http://chege.tech/ permanent;' /etc/nginx/sites-enabled/default
 sudo service nginx restart
+sudo service nginx reload
