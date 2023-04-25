@@ -4,7 +4,7 @@ sudo apt-get update -y && sudo apt-get upgrade -y
 sudo apt-get -y install nginx
 sudo chown -R "$USER":"$USER" /var/www/
 sudo chown -R "$USER":"$USER" /etc/nginx
-echo "Hello World" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+echo "Hello World" > /var/www/html/index.nginx-debian.html
 sudo sed -i '26i \\trewrite ^/redirect_me http://chege.tech/ permanent;' /etc/nginx/sites-available/default
 sudo service nginx restart
 sudo service nginx reload
