@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Installing Nginx on Server and serving custom 404 page
+srvname=$(hostname)
+TAB='\\t'
+sudo apt-get update -y 
+sudo apt-get install -y nginx
+sudo chown -R www-data:www-data /var/www/
+sudo chown -R www-data:www-data /etc/nginx/
+sudo cp -p /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html_bak
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+echo -e "Ceci n'est pas une page\\n" | sudo tee /var/www/html/xyzfoo.html
+sudo cp -p /etc/nginx/sites-available/default /etc/nginx/sites-available/default_bak
+sudo sed -i '24i \\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+sudo sed -i "25i ${TAB}error_page 404 /xyzfoo.html;" /etc/nginx/sites-available/default
+sudo sed -i "26i ${TAB}add_header X-Served-By ${srvname};" /etc/nginx/sites-available/default
+sudo service nginx start
+sudo service nginx reload
+sudo ufw allow 'Nginx HTTP'
