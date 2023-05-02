@@ -5,10 +5,6 @@ web02="35.153.93.173:80"
 my_ip_and_port="*:80"
 ha_config_file="/etc/haproxy/haproxy.cfg"
 TAB='\\t'
-sudo apt-get update -y 
-sudo apt-get install -y --no-install-recommends software-properties-common
-sudo add-apt-repository -y ppa:vbernat/haproxy-2.6
-sudo apt-get install -y haproxy=2.6.\*
 sudo ufw allow 80/tcp
 sudo service haproxy start
 sudo sed -i '$ a frontend http' $ha_config_file
