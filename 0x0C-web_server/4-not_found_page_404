@@ -4,7 +4,7 @@ sudo apt-get update -y
 sudo apt-get install -y nginx
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 echo -e "Ceci n'est pas une page\\n" | sudo tee /var/www/html/xyzfoo.html
-sudo sed -i '24 i \\trewrite ^/redirect_me$ http://chege.tech/ permanent;' /etc/nginx/sites-available/default
+sudo sed -i '24i \\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 sudo sed -i '25 i \\terror_page 404 /xyzfoo.html;' /etc/nginx/sites-available/default
 sudo service nginx reload
 sudo ufw allow 'Nginx HTTP'
