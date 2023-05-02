@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Script configures ha-proxy load balancer in RoundRobin mode
+web01="54.237.19.150:80"
+web02="35.153.93.173:80"
+my_ip_and_port="*:80"
+ha_config_file="/etc/haproxy/haproxy.cfg"
+TAB='\\t'
+sudo apt-get update -y 
+sudo apt-get install -y --no-install-recommends software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.6
+sudo apt-get install -y haproxy=2.6.\*
+sudo ufw allow 80/tcp
+sudo service haproxy start
+sudo sed -i '$ a frontend http' $ha_config_file
+sudo sed -i "$ a ${TAB}bind ${my_ip_and_port}" $ha_config_file
+sudo sed -i "$ a ${TAB}mode http" $ha_config_file
+sudo sed -i "$ a ${TAB}default_backend alx-backend" $ha_config_file
+sudo sed -i '$ a backend alx-backend' $ha_config_file
+sudo sed -i "$ a ${TAB}balance roundrobin" $ha_config_file
+sudo sed -i "$ a ${TAB}server web-01 ${web01} check" $ha_config_file
+sudo sed -i "$ a ${TAB}server web-02 ${web02} check" $ha_config_file
+sudo service haproxy restart
