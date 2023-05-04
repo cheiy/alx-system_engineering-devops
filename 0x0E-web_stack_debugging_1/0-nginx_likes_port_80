@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # This bash script ensures nginx runs on TCP port 80.
-sudo sed -i '/listen [0-9]/c \\tlisten *:80 default_server;' /etc/nginx/sites-enabled/default
+sudo sed -i '/listen [0-9]/c \\tlisten 0.0.0.0:80 default_server;' /etc/nginx/sites-enabled/default
 sudo pkill nginx && sudo service nginx restart && sudo ufw allow 80/tcp
