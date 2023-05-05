@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This script shows the type of domain record and where it points to
+domain="$1"
+subdomain="$2"
+get_record_details () {
+	rec_type=$(dig +noall +answer "$1"."$domain" | awk '{print $4}')
+	ip=$(dig +noall +answer "$1"."$domain" | awk '{print $5}')
+	echo "The subdomain $1 is a $rec_type record and points to $ip"
+}
+if [ -z "$subdomain" ]
+then
+	get_record_details "www"
+	get_record_details "lb-01"
+	get_record_details "web-01"
+	get_record_details "web-02"
+else
+	record_type=$(dig +noall +answer "$subdomain"."$domain" | awk '{print $4}')
+	ip=$(dig +noall +answer "$subdomain"."$domain" | awk '{print $5}')
+	echo "The subdomain $subdomain is a $record_type record and points to $ip"
+fi
