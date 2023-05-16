@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 # This script configures my web-server containers to run nginx as nginx user and to listen
 # on all active-IPs on port 8080
-sudo service apache2 stop
 sudo pkill apache2
 sudo service nginx stop
 sudo sed -i "s/listen 80 default_server/listen *:8080 default_server/g" /etc/nginx/sites-enabled/default
-sudo sed -i "s/user nginx*/user nginx/g" /etc/nginx/nginx.conf
+sudo sed -i "s/user */user nginx/g" /etc/nginx/nginx.conf
 sudo chown -R nginx:nginx /etc/nginx
 sudo chown -R nginx:nginx /var/log/nginx
 sudo chmod 644 /etc/nginx/nginx.conf
