@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-runuser -u "$1" whoami
+sudo runuser -u "$1" whoami
