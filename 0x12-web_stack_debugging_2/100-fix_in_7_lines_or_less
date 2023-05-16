@@ -2,5 +2,6 @@
 # This script configures my web-server containers to run nginx as nginx user and to listen on all active-IPs on port 8080
 sudo pkill -9 apache2
 sudo sed -i "s/80/8080/g" /etc/nginx/sites-enabled/default
+sudo chmod 777 /etc/nginx/nginx.conf
 sudo chown -R nginx:nginx /etc/nginx
 su nginx -c "service nginx restart"
