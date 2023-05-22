@@ -22,6 +22,7 @@ if __name__ == "__main__":
         elif item['completed'] is False:
             incomplete += 1
     total = complete + incomplete
-    print("Employee {} is done with tasks({}/{}):".format(name, complete, total))
+    print("Employee {} is done with tasks({}/{}):".format(name, complete, total
+                                                          ))
     for task in completed:
         print('\t '+task)
