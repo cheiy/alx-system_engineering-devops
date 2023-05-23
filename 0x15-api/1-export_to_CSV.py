@@ -12,7 +12,7 @@ from sys import argv
 if __name__ == "__main__":
     url = 'https://jsonplaceholder.typicode.com/users/'
     x = requests.get(url+argv[1])
-    name = x.json()['name']
+    u_n = x.json()['username']
     completed = []
     complete = 0
     incomplete = 0
@@ -28,4 +28,4 @@ if __name__ == "__main__":
     with open(CSV_out, "w", newline='') as csvfile:
         write = csv.writer(csvfile, delimiter=',', quoting=csv.QUOTE_ALL)
         for i in todos.json():
-            write.writerow([argv[1], name, i.get('completed'), i.get('title')])
+            write.writerow([argv[1], u_n, i.get('completed'), i.get('title')])
