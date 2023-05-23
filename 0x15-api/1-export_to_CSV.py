@@ -4,9 +4,9 @@ This Python script uses specified REST API to generate CSV file with
 info about an employee's TODO list given the employee's ID
 '''
 
+import vsv
 import requests
 from sys import argv
-import csv
 
 if __name__ == "__main__":
     url = 'https://jsonplaceholder.typicode.com/users/'
