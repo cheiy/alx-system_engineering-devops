@@ -29,4 +29,4 @@ def recurse(sub, hot_list=[], after=""):
         else:
             return recurse(sub, hot_list, after)
     else:
-        return ("None")
+        return None
