@@ -1,3 +1,4 @@
+# This manifest file fixes wordpress settings
 file { '/var/www/html/wp-settings.php':
   ensure => present,
 }
